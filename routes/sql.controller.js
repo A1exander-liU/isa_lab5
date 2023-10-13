@@ -21,6 +21,7 @@ function sql(path, req, res) {
     case "POST": {
       utils.extractBody(req)
         .then(query => {
+          console.log(`QUERY: ${JSON.stringify(query)}`);
           if (query.sql === "") {
             sqlService.fixedInsert()
               .then(data => {
