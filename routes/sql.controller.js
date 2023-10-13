@@ -9,7 +9,7 @@ function sql(path, req, res) {
     case "GET": {
       sqlService.query(path)
         .then(data => {
-          console.log(`controller ITEM: ${data}`);
+          console.log(`controller DATA: ${data}`);
           utils.response(200, constants.defaultHeaders, res, JSON.stringify(data));
         })
         .catch(err => {
@@ -27,7 +27,7 @@ function sql(path, req, res) {
       ];
       sqlService.insert("insert into Patients (name, dateofbirth) VALUES (?, ?), (?, ?), (?, ?), (?, ?)", rows)
         .then(data => {
-          console.log(`controller ITEM: ${data}`);
+          console.log(`controller DATA: ${data}`);
           utils.response(200, constants.defaultHeaders, res, JSON.stringify(data));
         })
         .catch(err => {
