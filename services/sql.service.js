@@ -13,9 +13,11 @@ class SqlService {
     const sqlQuery = this.extractSqlQuery(url);
     dbService.query(sqlQuery)
       .then(data => {
+        console.log(`sqlservice DATA: ${data}`);
         return data;
       })
       .catch(err => {
+        console.log(`sqlservice ERR: ${err}`);
         return err;
       });
   }

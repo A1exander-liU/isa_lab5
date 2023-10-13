@@ -9,11 +9,11 @@ function sql(path, req, res) {
     case "GET": {
       sqlService.query(path)
         .then(data => {
-          console.log(`ITEM: ${data}`);
+          console.log(`controller ITEM: ${data}`);
           utils.response(200, constants.defaultHeaders, res, JSON.stringify(data));
         })
         .catch(err => {
-          console.log(`ERR: ${err}`);
+          console.log(`controller ERR: ${err}`);
           utils.response(200, constants.defaultHeaders, res, JSON.stringify(err));
         });
     }
