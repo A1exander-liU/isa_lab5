@@ -11,15 +11,14 @@ class SqlService {
 
   async query(url) {
     const sqlQuery = this.extractSqlQuery(url);
-    await dbService.query(sqlQuery)
-      .then(data => {
-        console.log(`sqlservice DATA: ${JSON.stringify(data)}`);
-        return data;
-      })
-      .catch(err => {
-        console.log(`sqlservice ERR: ${err}`);
-        return err;
-      });
+    try {
+      const data = await dbService.query(sqlQuery);
+      console.log(`sqlservice DATA: ${JSON.stringify(data)}`);
+      return data;
+    } catch (err) {
+        console.log(`sqlservice ERR: ${JSON.stringify(err)}`);
+        throw err;
+    }
   }
 }
 
