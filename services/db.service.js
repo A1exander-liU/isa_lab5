@@ -36,7 +36,7 @@ class Database {
         data = await connection.query({ sql: queryString, insertIdAsNumber: true }, rows);
         
       } else {
-        data = await connection.query({ sql: queryString, bigIntAsNumber: true });
+        data = await connection.query({ sql: queryString, bigIntAsNumber: true, insertIdAsNumber: true });
       }
       console.log("dbservice DATA: " + JSON.stringify(data));
       return data;
