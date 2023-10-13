@@ -27,11 +27,16 @@ class Database {
     return pool;
   }
 
-  async query(queryString) {
+  async query(queryString, rows) {
     let connection;
     try {
       connection = await this.pool.getConnection();
-      const data = await connection.query(queryString);
+      let data;
+      if (rows) {
+        data = await connection.query(queryString, rows);
+      } else {
+        data = await connection.query(queryString);
+      }
       console.log("dbservice DATA: " + JSON.stringify(data));
       return data;
     } catch (err) {
