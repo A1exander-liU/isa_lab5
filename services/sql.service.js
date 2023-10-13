@@ -11,7 +11,7 @@ class SqlService {
 
   async query(url) {
     const sqlQuery = this.extractSqlQuery(url);
-    dbService.query(sqlQuery)
+    await dbService.query(sqlQuery)
       .then(data => {
         console.log(`sqlservice DATA: ${data}`);
         return data;
