@@ -10,6 +10,7 @@ function sql(path, req, res) {
       sqlService.query(path)
         .then(data => {
           console.log(`STRINGIFIED: ${JSON.stringify(data)}`);
+          console.log(`ITEM: ${data[0]}`);
           utils.response(200, constants.defaultHeaders, res, JSON.stringify(data));
         })
         .catch(err => {
