@@ -10,7 +10,7 @@ const env = {
 class Database {
   constructor() {
     console.log("ENV");
-    console.log(process.env);
+    console.log(JSON.stringify(env));
     this.host = env.host;
     this.database = env.database;
     this.user = env.user;
