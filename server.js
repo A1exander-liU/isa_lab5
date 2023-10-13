@@ -1,19 +1,14 @@
 const http = require("http");
+const url = require("url");
 
-const db = require("./db.service");
-
-function sendRequest(res, code, headers={ "Access-Control-Allow-Origin": "*" }, data) {
-  res.writeHead(code, headers);
-  res.write(JSON.stringify(data));
-  res.end();
-}
+const constants = require("./constants");
+const sqlRoute = require("./routes/sql.controller");
 
 http.createServer((req, res) => {
-  db.query("SELECT * FROM Patients")
-    .then(value => {
-      sendRequest(res, 200, { "Access-Control-Allow-Origin": "*", "Content-Type": "application/json" }, value);
-    })
-    .catch(err => {
-      sendRequest(res, 404, { "Access-Control-Allow-Origin": "*", "Content-Type": "application/json" }, err);
-    })
-}).listen();
+  const pathName = url.parse(req.url, true).pathname;
+  switch (pathName) {
+    case `${constants.basePath}/v1/sql/`: {
+      sqlRoute(pathName, req, res);
+    }
+  }
+}).listen(5000);
