@@ -33,5 +33,6 @@ function extractBody(req) {
 
 module.exports = {
   parseUrlSqlQuery: parseUrlSqlQuery,
-  response: response
+  response: response,
+  extractBody: extractBody
 };
