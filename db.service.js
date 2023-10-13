@@ -45,4 +45,4 @@ class Database {
 }
 
 const database = new Database();
-module.exports = service;
+module.exports = database;
