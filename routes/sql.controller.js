@@ -16,6 +16,7 @@ function sql(path, req, res) {
           console.log(`controller ERR: ${err}`);
           utils.response(200, constants.defaultHeaders, res, JSON.stringify(err));
         });
+        break;
     }
     case "POST": {
       const rows = [
@@ -33,6 +34,7 @@ function sql(path, req, res) {
           console.log(`controller ERR: ${err}`);
           utils.response(200, constants.defaultHeaders, res, JSON.stringify(err));
         })
+        break;
     }
   }
 }
