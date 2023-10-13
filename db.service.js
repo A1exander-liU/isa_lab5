@@ -9,6 +9,8 @@ const env = {
 
 class Database {
   constructor() {
+    console.log("ENV");
+    console.log(process.env);
     this.host = env.host;
     this.database = env.database;
     this.user = env.user;
@@ -23,7 +25,7 @@ class Database {
       password: this.password,
       database: this.database,
       connectionLimit: maxConnections
-    })
+    });
     return pool;
   }
 
