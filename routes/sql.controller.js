@@ -45,7 +45,8 @@ function sql(path, req, res) {
           }
         })
         .catch(err => {
-          
+          console.log(`controller ERR: ${err}`);
+          utils.response(200, constants.defaultHeaders, res, { error: err.text })
         })
         break;
     }
