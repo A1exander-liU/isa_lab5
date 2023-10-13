@@ -32,9 +32,10 @@ class Database {
     try {
       connection = await this.pool.getConnection();
       const data = await connection.query(queryString);
-      console.log(`DATA: ${data}`);
+      console.log("DATA: " + data);
       return data;
     } catch (err) {
+      console.log("ERR: " + err);
       throw err;
     } finally {
       if (connection) {
