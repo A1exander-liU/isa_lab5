@@ -13,7 +13,7 @@ class SqlService {
     const sqlQuery = this.extractSqlQuery(url);
     await dbService.query(sqlQuery)
       .then(data => {
-        console.log(`sqlservice DATA: ${data}`);
+        console.log(`sqlservice DATA: ${JSON.stringify(data)}`);
         return data;
       })
       .catch(err => {
