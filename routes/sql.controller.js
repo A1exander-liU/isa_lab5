@@ -10,11 +10,11 @@ function sql(path, req, res) {
       sqlService.query(path)
         .then(data => {
           console.log(`controller DATA: ${data}`);
-          utils.response(200, constants.defaultHeaders, res, JSON.stringify(data));
+          utils.response(200, constants.defaultHeaders, res, { data: data });
         })
         .catch(err => {
           console.log(`controller ERR: ${err}`);
-          utils.response(200, { "Access-Control-Allow-Origin": "*", "Content-Type": "text/html" }, res, err.message);
+          utils.response(200, constants.defaultHeaders, res, { error: err.text });
         });
         break;
     }
@@ -26,21 +26,21 @@ function sql(path, req, res) {
             sqlService.fixedInsert()
               .then(data => {
                 console.log(`controller DATA: ${data}`);
-                utils.response(200, constants.defaultHeaders, res, JSON.stringify(data));
+                utils.response(200, constants.defaultHeaders, res, { data: data });
               })
               .catch(err => {
                 console.log(`controller ERR: ${err}`);
-                utils.response(200, { "Access-Control-Allow-Origin": "*", "Content-Type": "text/html" }, res, err.text);
+                utils.response(200, constants.defaultHeaders, res, { error: err.text });
               })
           } else {
             sqlService.insert(query.sql)
               .then(data => {
                 console.log(`controller DATA: ${data}`);
-                utils.response(200, constants.defaultHeaders, res, JSON.stringify(data));
+                utils.response(200, constants.defaultHeaders, res, { data: data });
               })
               .catch(err => {
                 console.log(`controller ERR: ${err}`);
-                utils.response(200, { "Access-Control-Allow-Origin": "*", "Content-Type": "text/html" }, res, err.text);
+                utils.response(200, constants.defaultHeaders, res, { error: err.text });
               })
           }
         })
