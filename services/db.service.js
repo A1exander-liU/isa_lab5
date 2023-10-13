@@ -33,7 +33,7 @@ class Database {
       connection = await this.pool.getConnection();
       let data;
       if (rows) {
-        data = await connection.query({ sql: queryString, bigIntAsNumber: true }, rows);
+        data = await connection.query({ sql: queryString, insertIdAsNumber: true }, rows);
         
       } else {
         data = await connection.query({ sql: queryString, bigIntAsNumber: true });
