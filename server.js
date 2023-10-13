@@ -1,5 +1,5 @@
 const http = require("http");
 
 http.createServer((req, res) => {
-  console.log(`Server running on port ${PORT}`);
+  res.end(`Server is running.`);
 }).listen();
