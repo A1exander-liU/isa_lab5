@@ -1,3 +1,5 @@
+const url = require("url");
+
 function parseUrlSqlQuery(sqlQueryUrl) {
   return sqlQueryUrl.replace(/%20/g, " ");
 }
@@ -10,6 +12,23 @@ function response(statusCode, headers, res, data) {
     res.write(data);
   }
   res.end();
+}
+
+function extractBody(req) {
+  return new Promise((resolve, reject) => {
+    let body = [];
+    req
+      .on("error", err => {
+        reject(err);
+      })
+      .on("data", chunk => {
+        body.push(chunk);
+      })
+      .on("end", () => {
+        body = Buffer.concat(body).toString();
+        resolve(url.parse(body, true).query);
+      })
+  })
 }
 
 module.exports = {
