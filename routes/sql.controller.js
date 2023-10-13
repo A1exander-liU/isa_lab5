@@ -14,7 +14,7 @@ function sql(path, req, res) {
         })
         .catch(err => {
           console.log(`controller ERR: ${err}`);
-          utils.response(200, constants.defaultHeaders, res, JSON.stringify(err));
+          utils.response(200, constants.defaultHeaders, res, err);
         });
         break;
     }
@@ -32,7 +32,7 @@ function sql(path, req, res) {
         })
         .catch(err => {
           console.log(`controller ERR: ${err}`);
-          utils.response(200, constants.defaultHeaders, res, JSON.stringify(err));
+          utils.response(200, constants.defaultHeaders, res, err);
         })
         break;
     }
