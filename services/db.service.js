@@ -33,9 +33,10 @@ class Database {
       connection = await this.pool.getConnection();
       let data;
       if (rows) {
-        data = await connection.query(queryString, rows);
+        data = await connection.query(queryString, rows, { supportBigInt: false });
+        
       } else {
-        data = await connection.query(queryString);
+        data = await connection.query(queryString, { supportBigInt: false });
       }
       console.log("dbservice DATA: " + JSON.stringify(data));
       return data;
