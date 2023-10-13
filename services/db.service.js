@@ -45,7 +45,7 @@ class Database {
       throw err;
     } finally {
       if (connection) {
-        connection.release();
+        connection.end();
       }
     }
   }
