@@ -22,6 +22,23 @@ class SqlService {
     }
   }
 
+  async fixedInsert() {
+    const rows = [
+      "Sara Brown", "1901-01-01",
+      "John Smith", "1941-01-01",
+      "Jack Ma", "1961-01-30",
+      "Elon Musk", "1999-01-01"
+    ];
+    try {
+      const result = await this.insert("INSERT INTO Patients (name, dateofbirth) VALUES (?, ?), (?, ?), (?, ?), (?), ?", rows);
+      console.log(`sqlservice DATA: ${result}`);
+      return result;
+    } catch (err) {
+      console.log(`sqlservice ERR: ${err}`);
+      throw err;
+    }
+  }
+
   async insert(sqlQuery, data) {
     try {
       const result = await dbService.query(sqlQuery, data);
