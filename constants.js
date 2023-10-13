@@ -1,7 +1,7 @@
 const basePath = "/COMP4537/labs/5/api";
-const allowOriginKey = "Access-Control-Allow-Origin";
+const defaultHeaders = { "Access-Control-Allow-Origin": "*", "Content-Type": "application/json" };
 
 module.exports = {
   basePath: basePath,
-  allowOriginKey: allowOriginKey
+  defaultHeaders: defaultHeaders
 };
