@@ -30,7 +30,7 @@ function sql(path, req, res) {
               })
               .catch(err => {
                 console.log(`controller ERR: ${err}`);
-                utils.response(200, { "Access-Control-Allow-Origin": "*", "Content-Type": "text/html" }, res, err.message);
+                utils.response(200, { "Access-Control-Allow-Origin": "*", "Content-Type": "text/html" }, res, err.text);
               })
           } else {
             sqlService.insert(query.sql)
@@ -40,7 +40,7 @@ function sql(path, req, res) {
               })
               .catch(err => {
                 console.log(`controller ERR: ${err}`);
-                utils.response(200, { "Access-Control-Allow-Origin": "*", "Content-Type": "text/html" }, res, err.message);
+                utils.response(200, { "Access-Control-Allow-Origin": "*", "Content-Type": "text/html" }, res, err.text);
               })
           }
         })
