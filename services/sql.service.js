@@ -20,6 +20,17 @@ class SqlService {
         throw err;
     }
   }
+
+  async insert(sqlQuery, data) {
+    try {
+      const data = await dbService.query(sqlQuery, data);
+      console.log(`sqlservice DATA: ${data}`);
+      return data;
+    } catch (err) {
+      console.log(`sqlservice ERR: ${err}`);
+      throw err;
+    }
+  }
 }
 
 const sqlService = new SqlService();
