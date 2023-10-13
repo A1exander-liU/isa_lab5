@@ -24,7 +24,6 @@ class Database {
       database: this.database,
       connectionLimit: maxConnections
     });
-    console.log(`POOL: ${pool}`);
     return pool;
   }
 
@@ -33,6 +32,7 @@ class Database {
     try {
       connection = await this.pool.getConnection();
       const data = await connection.query(queryString);
+      console.log(`DATA: ${data}`);
       return data;
     } catch (err) {
       throw err;
