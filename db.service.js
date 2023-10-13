@@ -13,7 +13,7 @@ class Database {
     this.database = env.database;
     this.user = env.user;
     this.password = env.password;
-    this.pool = createPool();
+    this.pool = this.createPool();
   }
 
   createPool(maxConnections=5) {
