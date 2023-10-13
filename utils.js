@@ -2,8 +2,8 @@ function parseUrlSqlQuery(sqlQueryUrl) {
   return sqlQueryUrl.replace(/%20/g, " ");
 }
 
-function response(statusCode, headers={}, res, data) {
-  res.writeHead(statusCode, headers);
+function response(statusCode, headers, res, data) {
+  res.writeHead(statusCode, headers ? headers : {});
   if (headers["Content-Type"] === "application/json") {
     res.write(JSON.stringify(data));
   } else {
