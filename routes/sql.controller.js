@@ -9,7 +9,7 @@ function sql(path, req, res) {
     case "GET": {
       sqlService.query(path)
         .then(data => {
-          console.log(`ITEM: ${data[0]}`);
+          console.log(`ITEM: ${data}`);
           utils.response(200, constants.defaultHeaders, res, JSON.stringify(data));
         })
         .catch(err => {
