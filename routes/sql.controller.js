@@ -10,11 +10,11 @@ function sql(path, req, res) {
       sqlService.query(path)
         .then(data => {
           console.log(`controller DATA: ${data}`);
-          utils.response(200, constants.defaultHeaders, res, { data: data });
+          utils.response(200, constants.defaultHeaders, res, { code: 200, data: data });
         })
         .catch(err => {
           console.log(`controller ERR: ${err}`);
-          utils.response(200, constants.defaultHeaders, res, { error: err.text });
+          utils.response(200, constants.defaultHeaders, res, { code: 200, error: err.text });
         });
         break;
     }
@@ -26,27 +26,27 @@ function sql(path, req, res) {
             sqlService.fixedInsert()
               .then(data => {
                 console.log(`controller DATA: ${data}`);
-                utils.response(200, constants.defaultHeaders, res, { data: data });
+                utils.response(201, constants.defaultHeaders, res, { code: 201, data: data });
               })
               .catch(err => {
                 console.log(`controller ERR: ${err}`);
-                utils.response(200, constants.defaultHeaders, res, { error: err.text });
+                utils.response(200, constants.defaultHeaders, res, { code: 200, error: err.text });
               })
           } else {
             sqlService.insert(query.sql)
               .then(data => {
                 console.log(`controller DATA: ${data}`);
-                utils.response(200, constants.defaultHeaders, res, { data: data });
+                utils.response(201, constants.defaultHeaders, res, { code: 201, data: data });
               })
               .catch(err => {
                 console.log(`controller ERR: ${err}`);
-                utils.response(200, constants.defaultHeaders, res, { error: err.text });
+                utils.response(200, constants.defaultHeaders, res, { code: 200, error: err.text });
               })
           }
         })
         .catch(err => {
           console.log(`controller ERR: ${err}`);
-          utils.response(200, constants.defaultHeaders, res, { error: err.text })
+          utils.response(400, constants.defaultHeaders, res, { code: 400, error: err.text })
         })
         break;
     }
