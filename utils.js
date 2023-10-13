@@ -4,7 +4,11 @@ function parseUrlSqlQuery(sqlQueryUrl) {
 
 function response(statusCode, headers={}, res, data) {
   res.writeHead(statusCode, headers);
-  res.write(JSON.stringify(data));
+  if (headers["Content-Type"] === "application/json") {
+    res.write(JSON.stringify(data));
+  } else {
+    res.write(data);
+  }
   res.end();
 }
 
