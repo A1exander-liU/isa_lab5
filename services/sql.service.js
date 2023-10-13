@@ -30,7 +30,7 @@ class SqlService {
       "Elon Musk", "1999-01-01"
     ];
     try {
-      const result = await this.insert("INSERT INTO Patients (name, dateofbirth) VALUES (?, ?), (?, ?), (?, ?), (?), ?", rows);
+      const result = await this.insert("INSERT INTO Patients (name, dateofbirth) VALUES (?, ?), (?, ?), (?, ?), (?, ?)", rows);
       console.log(`sqlservice DATA: ${result}`);
       return result;
     } catch (err) {
