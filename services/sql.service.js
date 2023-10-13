@@ -23,9 +23,9 @@ class SqlService {
 
   async insert(sqlQuery, data) {
     try {
-      const data = await dbService.query(sqlQuery, data);
-      console.log(`sqlservice DATA: ${data}`);
-      return data;
+      const result = await dbService.query(sqlQuery, data);
+      console.log(`sqlservice DATA: ${result}`);
+      return result;
     } catch (err) {
       console.log(`sqlservice ERR: ${err}`);
       throw err;
