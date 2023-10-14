@@ -5,7 +5,7 @@ const constants = require("../constants");
 const sqlService = require("../services/sql.service");
 
 function sql(path, req, res) {
-  switch(req.method) {
+  switch (req.method) {
     case "GET": {
       sqlService.query(path)
         .then(data => {
@@ -13,10 +13,10 @@ function sql(path, req, res) {
           utils.response(200, constants.defaultHeaders, res, { code: 200, data: data });
         })
         .catch(err => {
-          console.log(`controller ERR: ${err}`);
-          utils.response(200, constants.defaultHeaders, res, { code: 200, error: err.text });
+          console.log(`controller ERR: ${err.text}`);
+          utils.response(400, constants.defaultHeaders, res, { code: 400, error: err.text });
         });
-        break;
+      break;
     }
     case "POST": {
       utils.extractBody(req)
@@ -29,8 +29,8 @@ function sql(path, req, res) {
                 utils.response(201, constants.defaultHeaders, res, { code: 201, data: data });
               })
               .catch(err => {
-                console.log(`controller ERR: ${err}`);
-                utils.response(200, constants.defaultHeaders, res, { code: 200, error: err.text });
+                console.log(`controller ERR: ${err.text}`);
+                utils.response(400, constants.defaultHeaders, res, { code: 400, error: err.text });
               })
           } else {
             sqlService.insert(query.sql)
@@ -39,16 +39,16 @@ function sql(path, req, res) {
                 utils.response(201, constants.defaultHeaders, res, { code: 201, data: data });
               })
               .catch(err => {
-                console.log(`controller ERR: ${err}`);
-                utils.response(200, constants.defaultHeaders, res, { code: 200, error: err.text });
+                console.log(`controller ERR: ${err.text}`);
+                utils.response(400, constants.defaultHeaders, res, { code: 400, error: err.text });
               })
           }
         })
         .catch(err => {
-          console.log(`controller ERR: ${err}`);
-          utils.response(400, constants.defaultHeaders, res, { code: 400, error: err.text })
+          console.log(`controller ERR: ${err.text}`);
+          utils.response(404, constants.defaultHeaders, res, { code: 404, error: err.text })
         })
-        break;
+      break;
     }
   }
 }
