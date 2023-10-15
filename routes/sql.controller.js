@@ -19,7 +19,7 @@ function sql(path, req, res) {
       break;
     }
     case "POST": {
-      console.log(`REQUEST STUFF: ${JSON.stringify(req)}`);
+      console.log(`REQUEST STUFF: ${req}`);
       utils.extractBody(req)
         .then(query => {
           console.log(`QUERY: ${JSON.stringify(query)}`);
