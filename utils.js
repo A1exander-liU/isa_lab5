@@ -26,6 +26,7 @@ function extractBody(req) {
       })
       .on("end", () => {
         body = Buffer.concat(body).toString();
+        console.log(`AFTER BODY PARSED: ${JSON.stringify(url.parse(body, true))}`)
         resolve(url.parse(body, true).query);
       })
   })
