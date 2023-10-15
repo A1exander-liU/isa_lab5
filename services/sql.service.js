@@ -17,7 +17,7 @@ class SqlService {
       console.log(`sqlservice DATA: ${JSON.stringify(data)}`);
       return data;
     } catch (err) {
-        console.log(`sqlservice ERR: ${JSON.stringify(err)}`);
+        console.log(`sqlservice ERR: ${err.text}`);
         throw err;
     }
   }
@@ -31,10 +31,10 @@ class SqlService {
     ];
     try {
       const result = await this.insert("INSERT INTO Patients (name, dateofbirth) VALUES (?, ?), (?, ?), (?, ?), (?, ?)", rows);
-      console.log(`sqlservice DATA: ${result}`);
+      console.log(`sqlservice DATA: ${JSON.stringify(result)}`);
       return result;
     } catch (err) {
-      console.log(`sqlservice ERR: ${err}`);
+      console.log(`sqlservice ERR: ${err.text}`);
       throw err;
     }
   }
@@ -42,10 +42,10 @@ class SqlService {
   async insert(sqlQuery, data) {
     try {
       const result = await dbService.query(sqlQuery, data);
-      console.log(`sqlservice DATA: ${result}`);
+      console.log(`sqlservice DATA: ${JSON.stringify(data)}`);
       return result;
     } catch (err) {
-      console.log(`sqlservice ERR: ${err}`);
+      console.log(`sqlservice ERR: ${err.text}`);
       throw err;
     }
   }
