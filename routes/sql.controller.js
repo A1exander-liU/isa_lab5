@@ -27,7 +27,7 @@ function sql(path, req, res) {
             sqlService.fixedInsert()
               .then(data => {
                 console.log(`controller DATA: ${data}`);
-                utils.response(201, constants.defaultHeaders, res, { code: 201, data: data });
+                utils.response(201, constants.defaultHeaders, res, { code: 201, data: [data] });
               })
               .catch(err => {
                 console.log(`controller ERR: ${err.text}`);
@@ -37,7 +37,7 @@ function sql(path, req, res) {
             sqlService.insert(query.sql)
               .then(data => {
                 console.log(`controller DATA: ${data}`);
-                utils.response(201, constants.defaultHeaders, res, { code: 201, data: data });
+                utils.response(201, constants.defaultHeaders, res, { code: 201, data: [data] });
               })
               .catch(err => {
                 console.log(`controller ERR: ${err.text}`);
