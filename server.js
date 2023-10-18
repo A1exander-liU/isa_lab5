@@ -6,9 +6,15 @@ const utils = require("./utils");
 const sqlRoute = require("./routes/sql.controller");
 
 http.createServer((req, res) => {
-  console.log(`URL: ${req.url}`);
-  const pathName = url.parse(req.url, true).pathname;
-  console.log(`QUERY: ${url.parse(req.url, true).path}`);
+  try {
+    console.log(`URL: ${req.url}`);
+    const pathName = url.parse(req.url, true).pathname;
+    console.log(`QUERY: ${url.parse(req.url, true).path}`);
+  } catch (err) {
+    console.log(`URL PARSE ERR: ${err}`);
+    res.end("Failed to parse url");
+  }
+  
   if (pathName.search(`${constants.basePath}/v1/sql`) > -1) {
     sqlRoute(pathName, req, res);
   }
