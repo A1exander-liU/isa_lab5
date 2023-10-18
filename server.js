@@ -7,6 +7,7 @@ const sqlRoute = require("./routes/sql.controller");
 
 http.createServer((req, res) => {
   const pathName = url.parse(req.url, true).pathname;
+  console.log(`QUERY: ${url.parse(req.url, true).path}`);
   if (pathName.search(`${constants.basePath}/v1/sql`) > -1) {
     sqlRoute(pathName, req, res);
   }
